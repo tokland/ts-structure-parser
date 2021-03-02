@@ -19,6 +19,7 @@ import {ParameterModel} from "../index";
 import {UnionType} from "../index";
 import {BasicType} from "../index";
 import {classDecl} from "../index";
+import {EnumMemberDeclaration} from "./../index";
 import { JSONTransformer } from "./jsonTransformer";
 
 function parse(content: string) {
@@ -148,10 +149,25 @@ export function parseStruct(content: string, modules: {[path: string]: Module}, 
 
         if (x.kind === ts.SyntaxKind.EnumDeclaration) {
             var e = <ts.EnumDeclaration>x;
-            var members: string[] = [];
+            var members: EnumMemberDeclaration[] = [];
             if (e.members) {
-                e.members.forEach(y => {
-                    members.push(y["name"]["text"]);
+                e.members.forEach(member => {
+                    let value: number | string | undefined;
+                    if (member.initializer) {
+                      if (member.initializer.kind === ts.SyntaxKind.NumericLiteral) {
+                        value = parseInt((member.initializer as any).text);
+                      }
+                      if (
+                        member.initializer.kind === ts.SyntaxKind.StringLiteral ||
+                        member.initializer.kind === ts.SyntaxKind.JsxText
+                      ) {
+                        value = String((member.initializer as any).text);
+                      }
+                    }
+                    members.push({
+                      name: String((member.name as any).text),
+                      value,
+                    });
                 });
             }
             if (e.name) {
