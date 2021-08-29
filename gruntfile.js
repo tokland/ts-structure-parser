@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 
       copy: {
         main: {
-          src: ["package.json"],
+          src: ["README.md", "package.json", "license.txt"],
           dest: "dist/",
         },
       },
