@@ -1,15 +1,13 @@
 # TypeScript File Parser
 
-[![Build Status](https://travis-ci.org/AbatapCompany/ts-structure-parser.svg?branch=master)](https://travis-ci.org/AbatapCompany/ts-structure-parser)
-
-This repository provides a parser for `*.ts` files. It parses the structure of a file and provides JSON object that contains its declaration.
+Parse `ts` files and convert them to JSON objects.
 
 ## Usage
 
 ```js
-import tsFileStruct = require("ts-file-parser")
+import tsFileStruct from "ts-file-parser";
 
-var filePath = "./src/typescript-file.ts";
-var decls = fs.readFileSync(filePath).toString();
-var jsonStructure = tsFileStruct.parseStruct(decls, {}, filePath);
+const filePath = "./src/typescript-file.ts";
+const decls = fs.readFileSync(filePath).toString();
+const jsonStructure = tsFileStruct.parseStruct(decls, {}, filePath);
 ```
