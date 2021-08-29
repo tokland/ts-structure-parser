@@ -1,6 +1,6 @@
 {
-  "name": "ts-file-parser",
-  "version": "0.0.21",
+  "name": "@tokland/ts-file-parser",
+  "version": "0.0.22",
   "description": "This repository provides a parser for `*.ts` files. It parses the structure of a file and provides JSON object that contains its declaration.",
   "private": false,
   "main": "dist/index.js",
@@ -18,6 +18,7 @@
     "chai": "4.1.1",
     "grunt": "1.0.2",
     "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-mocha-test": "0.13.2",
     "grunt-ts": "6.0.0-beta.16",
     "grunt-tslint": "5.0.1",
@@ -27,16 +28,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AbatapCompany/ts-structure-parser.git"
+    "url": "https://github.com/tokland/ts-structure-parser.git"
   },
   "keywords": [
     "typescript",
     "content",
     "parser"
   ],
-  "homepage": "https://github.com/AbatapCompany/ts-structure-parser",
+  "homepage": "https://github.com/tokland/ts-structure-parser",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/AbatapCompany/ts-structure-parser/issues"
+    "url": "https://github.com/tokland/ts-structure-parser/issues"
   }
 }

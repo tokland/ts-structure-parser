@@ -12,7 +12,10 @@ module.exports = function(grunt) {
             ],
             dest: "./dist"
           },],
-          tsconfig: true
+          tsconfig: true,
+          options: {
+            declaration: true,
+          },
         },
 
         test: {
@@ -54,16 +57,24 @@ module.exports = function(grunt) {
         },
       },
 
+      copy: {
+        main: {
+          src: ["package.json"],
+          dest: "dist/",
+        },
+      },
+
     });
   
     grunt.loadNpmTasks("grunt-ts");
     grunt.loadNpmTasks("grunt-tslint");
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks("grunt-contrib-copy");
 
 
     grunt.registerTask("build", [
-      "clean:app", "ts:app", "tslint"
+      "clean:app", "ts:app", "tslint", "copy"
     ]);
 
     grunt.registerTask("test", [
